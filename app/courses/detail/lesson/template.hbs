@@ -1,5 +1,19 @@
 <section class="lesson-section lesson-section--video-screen lesson-section--free-lesson">
   <div class="lesson-video">
+    <div class="lesson-video__transport">
+      {{#if model.prevLesson}}
+        {{#link-to "courses.detail.lesson" model.prevLesson class="lesson-video__transport-button lesson-video__transport-button--left"}}
+          {{fa-icon "chevron-left"}}
+        {{/link-to}}
+      {{/if}}
+
+      {{#if model.nextLesson}}
+        {{#link-to "courses.detail.lesson" model.nextLesson class="lesson-video__transport-button lesson-video__transport-button--right"}}
+          {{fa-icon "chevron-right"}}
+        {{/link-to}}
+      {{/if}}
+    </div>
+
     <div class="yg-container">
       <div class="yg-row">
         <div class="yg-col-1of1">
@@ -18,20 +32,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="lesson-video__transport">
-      {{#if model.prevLesson}}
-        {{#link-to "courses.detail.lesson" model.prevLesson class="lesson-video__transport-button lesson-video__transport-button--left"}}
-          {{fa-icon "chevron-left"}}
-        {{/link-to}}
-      {{/if}}
-
-      {{#if model.nextLesson}}
-        {{#link-to "courses.detail.lesson" model.nextLesson class="lesson-video__transport-button lesson-video__transport-button--right"}}
-          {{fa-icon "chevron-right"}}
-        {{/link-to}}
-      {{/if}}
     </div>
   </div>
 </section>
