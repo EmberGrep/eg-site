@@ -1,9 +1,10 @@
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import config from 'embergrep-site/config/environment';
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   authorizer: `authorizer:token`,
-  host: `http://localhost:8000`,
+  host: config.apiUrl,
 
   handleResponse(status) {
     if (status === 401 && this.get('session.isAuthenticated')) {

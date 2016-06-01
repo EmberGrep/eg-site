@@ -4,10 +4,12 @@
 require(`dotenv`).config();
 
 module.exports = function (environment) {
+  const apiUrl = process.env.API_HOST || 'http://localhost:8000';
+
   var ENV = {
     modulePrefix: `embergrep-site`,
     environment: environment,
-    apiUrl: `http://localhost:8000`,
+    apiUrl,
     baseURL: `/`,
     stripeKey: process.env.STRIPE_KEY,
     stripeCheckoutImg: '/public/checkout-logo.png',
@@ -20,9 +22,9 @@ module.exports = function (environment) {
     },
 
     'ember-simple-auth-token': {
-      serverTokenEndpoint: `http://localhost:8000/auth-token`,
+      serverTokenEndpoint: `${apiUrl}/auth-token`,
       refreshAccessTokens: true,
-      serverTokenRefreshEndpoint: `http://localhost:8000/refresh-token`,
+      serverTokenRefreshEndpoint: `${apiUrl}/refresh-token`,
       identificationField: `username`,
       timeFactor: 1000,
     },
